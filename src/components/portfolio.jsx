@@ -26,6 +26,6 @@ export default function Portfolio() {
     }, [])
     
     return <>
-    {!state ? (portfolio != null ? listeTemplate[portfolio.template] : <DefaultPage/> ): <PageNotFound/>}
+    {!state ? (portfolio != null && listeTemplate[portfolio.template]  ): <PageNotFound/>}
     </>
 }
