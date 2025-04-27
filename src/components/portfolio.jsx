@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import PageNotFound from "./PageNotFound"
 import Template1 from "./templates/template1/template1"
+import DefaultPage from "./DefaultPage"
 
 export default function Portfolio() {
     const {lien_portfolio} = useParams()
@@ -11,7 +11,7 @@ export default function Portfolio() {
         <Template1 portfolio={portfolio}/>
     ]
     useEffect( () => {
-       fetch(`http://${window.location.hostname}:8008/${lien_portfolio}`)
+       fetch(`https://portfolioapi-d2ua.onrender.com/${lien_portfolio}`)
       .then(res=>res.json())
       .then(res=>{
         if (res.detail){
@@ -26,6 +26,6 @@ export default function Portfolio() {
     }, [])
     
     return <>
-    {!state ? (portfolio != null ? listeTemplate[portfolio.template] : <div>wait</div> ): <PageNotFound/>}
+    {!state ? (portfolio != null ? listeTemplate[portfolio.template] : <DefaultPage/> ): <PageNotFound/>}
     </>
 }

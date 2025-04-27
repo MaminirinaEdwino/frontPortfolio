@@ -32,7 +32,7 @@ export default function Template1({portfolio}) {
 				</div>
 				<img className="w-[50%] lg:max-w-[500px] p-5 rounded-4xl mx-auto "
 					src={
-						`http://localhost:8008/portfolio/photo/${
+						`https://portfolioapi-d2ua.onrender.com/portfolio/photo/${
 							portfolio.id
 						}`
 					}
