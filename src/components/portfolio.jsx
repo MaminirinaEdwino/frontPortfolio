@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Template1 from "./templates/template1/template1"
 import DefaultPage from "./DefaultPage"
+import PageNotFound from "./PageNotFound"
 
 export default function Portfolio() {
     const {lien_portfolio} = useParams()
