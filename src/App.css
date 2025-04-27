@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-c-1 : #F5EFE7;
+  --color-c-2 : #D8C4B6;
+  --color-c-3 : #3E5879;
+  --color-c-4 : #213555;
+  --color-template-1: #01224D;
+  --color-template-2: #5c0e40;
+  --color-template-3: #a1143e;
+  --color-template-4: #ff204d;
+
+}
+*{
+  scroll-behavior: smooth; 
+  scrollbar-width:none;
+}
+.navlink{
+  @apply border-template-1 p-1 border rounded bg-template-1 text-template-4;
+}
