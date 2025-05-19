@@ -5,28 +5,43 @@ import DefaultPage from "./DefaultPage"
 import PageNotFound from "./PageNotFound"
 
 export default function Portfolio() {
-    const {lien_portfolio} = useParams()
-    const [state, setState] = useState(false)
+    const { lien_portfolio } = useParams()
+    const [state, setState] = useState(0)
     const [portfolio, setPortfolio] = useState(null)
     const listeTemplate = [
-        <Template1 portfolio={portfolio}/>
+        <Template1 lien={lien_portfolio}/>
     ]
-    useEffect( () => {
-       fetch(`https://portfolioapi-d2ua.onrender.com/${lien_portfolio}`)
-      .then(res=>res.json())
-      .then(res=>{
-        if (res.detail){
-            console.log(true)
-            setState(true)
-        }else{
-            setPortfolio(res)
-            console.log(res)
+    async function fetchTemplate(lien) {
+        await fetch(`http://${window.location.hostname}:1627/portfolio/template/${lien}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                if (res.detail) {
+        
+                } else {
+                    setState(res)
+                }
+            })
+            .catch(err => console.error(err))
+            
         }
-      })
-      .catch(err=>console.error(err))
-    }, [])
     
+    useEffect(() => {
+        console.log(lien_portfolio)
+    }, [])
     return <>
-    {!state ? (portfolio != null ? listeTemplate[portfolio.template] : <DefaultPage/> ): <PageNotFound/>}
+    {recupererTemplate(state, lien_portfolio)}
     </>
+}
+
+
+
+function recupererTemplate(template, lien){
+    console.log(template)
+    switch(template){
+        case 0:
+            return <Template1 lien_portfolio={lien}/>
+        default:
+            return <DefaultPage/>
+    }
 }

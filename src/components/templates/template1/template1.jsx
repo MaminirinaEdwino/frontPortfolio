@@ -2,8 +2,72 @@ import {useEffect, useState} from "react";
 import {FaHome, FaPhone, FaUser} from "react-icons/fa";
 import {GiSkills} from "react-icons/gi";
 
-export default function Template1({portfolio}) {
+export default function Template1({lien_portfolio}) {
 	const actual_year = new Date()
+    const [portfolio,setPortfolio] = useState({
+        "username": "edwino",
+        "firstname": "Mamirina",
+        "lastname": "Edwino",
+        "email": "edwinomaminirina@gmail.com",
+        "phone": "0343434434",
+        "adress": "Antsirabe",
+        "age": 22,
+        "facebook": "Edwino RAFITOARISOA",
+        "linkedin": "Edwino Maminirina",
+        "template": 0,
+        "titre": "testet",
+        "loisir": [
+          "sfdg",
+          "sfdg"
+        ],
+        "parcours": [
+          {
+            "titre": "teste",
+            "annee": "teste",
+            "etablissement": "teste"
+          }
+        ],
+        "nombre_visite": 0,
+        "langue": [
+          {
+            "titre": "qdsfqs",
+            "niveau": 2
+          }
+        ],
+        "lien_portfolio": "edwinotestet",
+        "id": 8,
+        "lettre_introduction": "teste",
+        "domaine": "teste",
+        "experience_professionnelle": [
+          {
+            "titre": "teste",
+            "annee": "teste",
+            "entreprise": "teste"
+          }
+        ],
+        "skills": [
+          {
+            "titre": "qsdf",
+            "niveau": 1
+          }
+        ]
+      })
+    const fecthPortfolio = async (e)=>{
+        await fetch(`http://${window.location.hostname}:1627/${lien_portfolio}`)
+        .then(res=>res.json())
+        .then(res=>{
+          if (res.detail){
+              console.log(true)
+          }else{
+              setPortfolio(res)
+              console.log(res)
+          }
+        })
+        .catch(err=>console.error(err))
+    }
+    useEffect( () => {
+       fecthPortfolio()
+    }, [])
 	return <>
 		<div className="bg-template-1 min-h-[100vh] w-full">
 			<header className="flex justify-between p-2 border-b bg-template-3/50 backdrop-blur-xl text-template-1 sticky top-0 z-20">
@@ -32,7 +96,7 @@ export default function Template1({portfolio}) {
 				</div>
 				<img className="w-[50%] lg:max-w-[500px] p-5 rounded-4xl mx-auto "
 					src={
-						`https://portfolioapi-d2ua.onrender.com/portfolio/photo/${
+						`http://${window.location.hostname}:1627/portfolio/photo/${
 							portfolio.id
 						}`
 					}
