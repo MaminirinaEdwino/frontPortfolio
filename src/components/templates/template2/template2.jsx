@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import Header2 from "./header2"
 import LandingPage2 from "./landing2"
 import AboutMe2 from "./aboutMe2"
+import Parcours2 from "./parcours2"
+import Skills2 from "./skills"
 
 export default function Template2({lien_portfolio}) {
 
@@ -75,5 +77,9 @@ export default function Template2({lien_portfolio}) {
         <Header2 nom={portfolio.firstname} prenom={portfolio.lastname}/>
         <LandingPage2 nom={portfolio.firstname} prenom={portfolio.lastname}  domaine={portfolio.titre} photo={portfolio.photo} id={portfolio.id}/>
         <AboutMe2 introduction={portfolio.lettre_introduction} domaine={portfolio.domaine}/>
+        <div className="md:grid md:grid-cols-2">
+        <Parcours2 professionnel={portfolio.experience_professionnelle} education={portfolio.parcours}/>
+        <Skills2 lang={portfolio.langue} loisires={portfolio.loisir} skills={portfolio.skills}></Skills2>
+        </div>
     </>
 }
