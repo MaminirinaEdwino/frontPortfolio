@@ -75,7 +75,7 @@ export default function Template4({lien_portfolio}) {
                fecthPortfolio()
             }, [])
     return <div className="text-white">
-    <img src={bg} alt=""  className="fixed -z-10 h-full blur-sm"/>
+    <img src={bg} alt=""  className="fixed -z-10 blur-sm w-full h-full mx-auto"/>
         <header className="flex gap-2 justify-between p-2 px-6 shadow-2xl bg-whute/25 backdrop-blur-2xl sticky top-0">
             <p className="text-xl font-bold">{portfolio.firstname} {portfolio.lastname}</p>
             <nav>
