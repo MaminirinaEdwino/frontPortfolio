@@ -186,6 +186,11 @@ export default function Template6({lien_portfolio}) {
                                    
                                     <span className="text-xs">Niveau </span> <Progress className="h-4"value={skill.niveau*10}></Progress>
                                 </div>)}
+                                {portfolio.langue.map((skill, index)=><div className={"m-1"}>
+                                    <p className="font-bold">{skill.titre}</p>
+                                   
+                                    <span className="text-xs">Niveau </span> <Progress className="h-4"value={skill.niveau*10}></Progress>
+                                </div>)}
                             </div>
                         </div>}
                         {choix == "loisir" && <div className="p-2 flex gap-3 flex-wrap">
